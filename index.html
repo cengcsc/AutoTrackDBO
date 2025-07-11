@@ -2,83 +2,65 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Loading Example</title>
+  <title>AutoTrack Updater</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-    }
     html, body {
+      margin: 0;
+      padding: 0;
       height: 100%;
-      background-color: #ffffff;
-      font-family: Arial, sans-serif;
+      overflow: hidden;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: #ffffff;
     }
 
-    /* Loading screen styles */
-    #loadingScreen {
+    #loader {
       position: fixed;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       width: 100vw;
       height: 100vh;
-      background-color: #ffffff;
+      background: #ffffff;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
+      text-align: center;
       z-index: 9999;
-      transition: opacity 0.5s ease;
     }
 
-    #loadingScreen.hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    #loadingScreen img {
-      max-width: 400px;
+    #loader img {
+      width: 150px;
       height: auto;
     }
 
-    /* Main content hidden initially */
-    #mainContent {
+    iframe {
       display: none;
-      padding: 20px;
-    }
-    #mainContent.visible {
-      display: block;
+      width: 100vw;
+      height: 100vh;
+      border: none;
     }
   </style>
 </head>
 <body>
-
-  <!-- Loading Overlay -->
-  <div id="loadingScreen">
+  <div id="loader">
     <img src="https://i.gifer.com/embedded/download/Uond.gif" alt="Loading..." />
   </div>
 
-  <!-- Your actual content here -->
-  <div id="mainContent">
-    <h1>Welcome to the App!</h1>
-    <p>This content is revealed after the loading screen disappears.</p>
-    <!-- Put your GitHub page app content here -->
-  </div>
+  <iframe
+    id="contentFrame"
+    src="https://script.google.com/macros/s/AKfycbzbm-8sz5RwmUoEldebUbx6ygssn2gg6oT52fM56jNIFqLUMlRz8d-wYCWamyjIts03/exec"
+    allowfullscreen>
+  </iframe>
 
   <script>
-    window.addEventListener("load", () => {
-      setTimeout(() => {
-        const loadingScreen = document.getElementById("loadingScreen");
-        const mainContent = document.getElementById("mainContent");
+    const loader = document.getElementById("loader");
+    const iframe = document.getElementById("contentFrame");
 
-        // Fade out loading screen
-        loadingScreen.classList.add("hidden");
-
-        // After transition ends, hide completely and show main content
-        loadingScreen.addEventListener("transitionend", () => {
-          loadingScreen.style.display = "none";
-          mainContent.classList.add("visible");
-        }, { once: true });
-      }, 8000); // 8 seconds delay
-    });
+    setTimeout(() => {
+      loader.style.display = "none";
+      iframe.style.display = "block";
+    }, 8000); // 8 seconds
   </script>
-
 </body>
 </html>
