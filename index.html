@@ -13,8 +13,8 @@
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #000;
-      color: #fff;
+      background-color: #ffffff;
+      color: #000000;
     }
 
     /* Loading Screen */
@@ -24,7 +24,7 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background-color: #000;
+      background-color: #ffffff;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -32,7 +32,7 @@
     }
 
     #loadingScreen img {
-      max-width: 500px;
+      max-width: 400px;
       height: auto;
     }
 
@@ -41,8 +41,6 @@
       display: none;
       padding: 40px;
       text-align: center;
-      background-color: #fff;
-      color: #000;
     }
   </style>
 </head>
@@ -56,7 +54,7 @@
   <!-- Main Content -->
   <div id="mainContent">
     <h1>Welcome!</h1>
-    <p>Your application has loaded after 8 seconds.</p>
+    <p>The app has loaded after an 8-second intro.</p>
   </div>
 
   <script>
@@ -69,7 +67,7 @@
           loader.style.display = "none";
           document.getElementById("mainContent").style.display = "block";
         }, 600);
-      }, 8000); // 8 second intentional delay
+      }, 8000); // 8-second delay
     });
   </script>
 
