@@ -10,7 +10,7 @@
       padding: 0;
       height: 100%;
       font-family: "IBM Plex Sans", sans-serif;
-      background: #101015; /* dark bg like anime gif */
+      background: #101015;
     }
 
     .loading-screen {
@@ -51,13 +51,13 @@
 </head>
 <body>
 
-<!-- Loading screen with anime-style gif -->
+<!-- Loading screen -->
 <div class="loading-screen" id="loadingScreen">
   <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/fca69662-705b-4186-bd73-737ea4c3a4f9/dcfxblp-86ed644a-5e60-4297-ba27-812f8ca3a96d.gif" alt="Loading animation">
   <div class="loading-text">Loading Student Portal...</div>
 </div>
 
-<!-- Embedded GAS web app -->
+<!-- Embedded Google Apps Script Web App -->
 <iframe 
   id="gasApp" 
   src="https://script.google.com/macros/s/AKfycbzbm-8sz5RwmUoEldebUbx6ygssn2gg6oT52fM56jNIFqLUMlRz8d-wYCWamyjIts03/exec">
@@ -67,9 +67,12 @@
   const iframe = document.getElementById("gasApp");
   const loader = document.getElementById("loadingScreen");
 
+  // Delay for 8 seconds even if iframe loads early
   iframe.onload = () => {
-    loader.style.display = "none";
-    iframe.style.display = "block";
+    setTimeout(() => {
+      loader.style.display = "none";
+      iframe.style.display = "block";
+    }, 8000);
   };
 </script>
 
